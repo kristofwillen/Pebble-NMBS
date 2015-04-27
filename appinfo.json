@@ -28,13 +28,23 @@
                 "file": "fonts/UbuntuMono-Regular.ttf",
                 "name": "MONO_FONT_14",
                 "type": "font"
+            },
+            {
+                "file": "images/nmbs-app-icon.png",
+                "name": "IMAGES_NMBS_APP_ICON_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/nmbs.png",
+                "name": "IMAGES_NMBS_PNG",
+                "type": "png"
             }
         ]
     },
     "shortName": "NMBS",
     "uuid": "223995c5-9150-4770-94e9-82ec2c5b2623",
     "versionCode": 1,
-    "versionLabel": "0.3",
+    "versionLabel": "0.4",
     "watchapp": {
         "watchface": false
     }

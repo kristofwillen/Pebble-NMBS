@@ -7,6 +7,21 @@ var Vector2  = require('vector2');
 var toStation   = "[NOCONFIG]";
 var fromStation = "[NOCONFIG]";
 
+// i18n
+if (navigator.language == "nl-be") { 
+  var spoor      = "spoor";
+  var selectdest = "Bestemming :";
+} 
+else { 
+  if (navigator.language == "fr-be") { 
+    var spoor      = "voie"; 
+    var selectdest = "Destination :";
+  }
+  else {
+    var spoor      = "gate";
+    var selectdest = "Destination :";
+  }
+}  
 
 
 // CONFIGURATION ---------------------------------------------
@@ -25,7 +40,6 @@ Pebble.addEventListener("webviewclosed",
     fromStation = configuration.fromStation;
     localStorage.setItem('toStation', toStation);
     localStorage.setItem('fromStation', fromStation);
-    console.log("[DBUG] after LS.setItem : " + localStorage.getItem('fromStation') + " > " +localStorage.getItem('toStation'));
   }
 );
 
@@ -34,6 +48,7 @@ Pebble.addEventListener("webviewclosed",
 // FUNCTIONS -------------------------------------------------
 // parse the result and return it as itemlist
 var parseFeed = function(data, quantity) {
+
   var items = [];
   for(var i = 0; i < quantity; i++) {
     var dest        = data.connection[i].departure.direction.name;
@@ -56,11 +71,13 @@ var parseFeed = function(data, quantity) {
       travelHours  += 1;
       travelTime   -= 60;
     }
+    // Set remaining traveltime to HH:MM format
+    if (travelTime < 10) { travelTime = "0" + travelTime; }
         
     // Add to menu items array
     items.push({
       title:timestr + " " + dest,
-      subtitle:"spoor " + gate + " (" + travelHours + ":" + travelTime +")"
+      subtitle:spoor + " " + gate + " (" + travelHours + ":" + travelTime +")"
     });
   }
 
@@ -74,15 +91,14 @@ var parseFeed = function(data, quantity) {
 // creating selection menu
 toStation   = localStorage.getItem('toStation');
 fromStation = localStorage.getItem('fromStation');
-console.log("[DBUG] MAIN TS  = " + toStation);
 // Revert to default stations if Settings.getItem returns undefined
-if (typeof toStation   === "undefined") { toStation   = "Leuven"; }
-if (typeof fromStation === "undefined") { fromStation = "Brussels-South"; }
+if (typeof toStation   === "undefined") { toStation   = "[NOCONFIG]"; }
+if (typeof fromStation === "undefined") { fromStation = "[NOCONFIG]"; }
 
 
 var typeMenu = new UI.Menu({
   sections: [{
-    title: 'Select destination',
+    title: selectdest,
     items:[
       {title:toStation}, 
       {title:fromStation}
@@ -93,10 +109,11 @@ typeMenu.show();
 
 // on clicking "select" on menu generate get the list of trains 
 typeMenu.on('select', function(e) {
-  toStation = e.item.title;
-  if (toStation == "Leuven") { fromStation = "Brussels-South"; }
-  else { fromStation = "Leuven"; }
-  var urlstr = "http://api.irail.be/connections/?to=" + toStation + "&from=" + fromStation + "&format=json";
+  var toStationSelected = e.item.title;
+  var fromStationSelected;
+  if (toStationSelected == toStation) { fromStationSelected = fromStation; }
+  else { fromStationSelected = toStation; }
+  var urlstr = "http://api.irail.be/connections/?to=" + toStationSelected + "&from=" + fromStationSelected + "&format=json";
   
   // Show splash screen while waiting for data
   var splashWindow = new UI.Window();
@@ -128,7 +145,7 @@ typeMenu.on('select', function(e) {
     // Construct Menu to show to user
     var resultsMenu = new UI.Menu({
       sections: [{
-        title: fromStation + " > " + toStation,
+        title: fromStationSelected + " > " + toStationSelected,
         items: menuItems
       }]
     });
@@ -145,6 +162,7 @@ typeMenu.on('select', function(e) {
       body: error
     });
     detailCard.show();
+    splashWindow.hide();
   }
   );
  }

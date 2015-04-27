@@ -34,7 +34,7 @@
     "shortName": "NMBS",
     "uuid": "223995c5-9150-4770-94e9-82ec2c5b2623",
     "versionCode": 1,
-    "versionLabel": "0.2",
+    "versionLabel": "0.3",
     "watchapp": {
         "watchface": false
     }

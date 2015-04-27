@@ -1,11 +1,11 @@
 	/* Main app module */
  
 // VARS -----------------------------------------------------
-var UI     = require('ui');
-var ajax   = require('ajax');
-var Vector2 = require('vector2');
-var toStation;
-var fromStation;
+var UI       = require('ui');
+var ajax     = require('ajax');
+var Vector2  = require('vector2');
+var toStation   = "[NOCONFIG]";
+var fromStation = "[NOCONFIG]";
 
 
 
@@ -23,9 +23,12 @@ Pebble.addEventListener("webviewclosed",
     //Pebble.sendAppMessage(configuration);
     toStation   = configuration.toStation;
     fromStation = configuration.fromStation;
-    console.log("[DBUG] We're going from " + fromStation + " to " + toStation);
+    localStorage.setItem('toStation', toStation);
+    localStorage.setItem('fromStation', fromStation);
+    console.log("[DBUG] after LS.setItem : " + localStorage.getItem('fromStation') + " > " +localStorage.getItem('toStation'));
   }
 );
+
 
 
 // FUNCTIONS -------------------------------------------------
@@ -69,8 +72,12 @@ var parseFeed = function(data, quantity) {
 
 // MAIN ------------------------------------------------------
 // creating selection menu
-toStation   = "Leuven";
-fromStation = "Brussels-South";
+toStation   = localStorage.getItem('toStation');
+fromStation = localStorage.getItem('fromStation');
+console.log("[DBUG] MAIN TS  = " + toStation);
+// Revert to default stations if Settings.getItem returns undefined
+if (typeof toStation   === "undefined") { toStation   = "Leuven"; }
+if (typeof fromStation === "undefined") { fromStation = "Brussels-South"; }
 
 
 var typeMenu = new UI.Menu({

@@ -8,12 +8,12 @@ var toStation   = "[NOCONFIG]";
 var fromStation = "[NOCONFIG]";
 
 // i18n
-if (navigator.language == "nl-be") { 
+if (navigator.language.match(/nl/i)) { 
   var spoor      = "spoor";
   var selectdest = "Bestemming :";
 } 
 else { 
-  if (navigator.language == "fr-be") { 
+  if (navigator.language.match(/fr/i)) { 
     var spoor      = "voie"; 
     var selectdest = "Destination :";
   }

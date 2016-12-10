@@ -26,9 +26,9 @@ if (navigator.language.match(/nl/i)) {
   var selectstart   = "Start :";
   var selectdest    = "Bestemming :";
   var dldata        = "\n\nDownloaden van NMBS data...";
-  var EDLDATA       = "Data request gefaald !";
-  var ENOCFG        = "GEEN CONFIGURATIE GEVONDEN: Gelieve BeTrain te configureren via de Pebble app op uw GSM en daarna BeTrain te herstarten";
-  var EWRONGCFG     = "VERKEERDE CONFIGURATIE GEVONDEN : Gelieve minstens 2 stations te specifiëren in de BeTrain configuratie";
+  var EDLDATA       = "\n\nData request gefaald !";
+  var ENOCFG        = "\n\n\nGEEN CONFIGURATIE GEVONDEN: Gelieve BeTrain te configureren via de Pebble app op uw GSM en daarna BeTrain te herstarten";
+  var EWRONGCFG     = "\n\n\nVERKEERDE CONFIGURATIE GEVONDEN : Gelieve minstens 2 stations te specifiëren in de BeTrain configuratie";
 } 
 else { 
   if (navigator.language.match(/fr/i)) { 
@@ -36,18 +36,18 @@ else {
     var selectstart = "Départ :";
     var selectdest  = "Destination :";
     var dldata      = "\n\nTéléchargement des données de NMBS...";
-    var EDLDATA     = "Téléchargement échoué !";
-    var ENOCFG      = "AUCUNE CONFIGURATION TROUVE: Veuillez configurer BeTrain via le Pebble app sur vortre mobile, et après relancer BeTrain";
-    var EWRONGCFG   = "MAUVAISE CONFIGURATION TROUVE: Veuillez spécifier au moins 2 stations dans l'écran de configuration";
+    var EDLDATA     = "\n\nTéléchargement échoué !";
+    var ENOCFG      = "\n\n\nAUCUNE CONFIGURATION TROUVE: Veuillez configurer BeTrain via le Pebble app sur vortre mobile, et après relancer BeTrain";
+    var EWRONGCFG   = "\n\n\nMAUVAISE CONFIGURATION TROUVE: Veuillez spécifier au moins 2 stations dans l'écran de configuration";
   }
   else {
     var spoor       = "gate";
     var selectstart = "Start : ";
     var selectdest  = "Destination :";
     var dldata      = "\n\nDownloading NMBS data...";
-    var EDLDATA     = "Data fetch failed !";
-    var ENOCFG      = "NO CONFIGURATION FOUND: please config this app via the Pebble app on your phone, and restart the app";
-    var EWRONGCFG   = "WRONG CONFIGURATION FOUND: Please select at least 2 stations in the configuration window";
+    var EDLDATA     = "\n\nData fetch failed !";
+    var ENOCFG      = "\n\n\nNO CONFIGURATION FOUND: please config this app via the Pebble app on your phone, and restart the app";
+    var EWRONGCFG   = "\n\n\nWRONG CONFIGURATION FOUND: Please select at least 2 stations in the configuration window";
   }
 }  
 

@@ -10,19 +10,18 @@
         "media": [
             {
                 "file": "images/menu_icon.png",
-                "menuIcon": true,
                 "name": "IMAGE_MENU_ICON",
-                "type": "png"
+                "type": "bitmap"
             },
             {
                 "file": "images/logo_splash.png",
                 "name": "IMAGE_LOGO_SPLASH",
-                "type": "png"
+                "type": "bitmap"
             },
             {
                 "file": "images/tile_splash.png",
                 "name": "IMAGE_TILE_SPLASH",
-                "type": "png"
+                "type": "bitmap"
             },
             {
                 "file": "fonts/UbuntuMono-Regular.ttf",
@@ -30,22 +29,25 @@
                 "type": "font"
             },
             {
-                "file": "images/nmbs-app-icon.png",
-                "name": "IMAGES_NMBS_APP_ICON_PNG",
-                "type": "png"
-            },
-            {
-                "file": "images/nmbs.png",
-                "name": "IMAGES_NMBS_PNG",
+                "file": "images/BeTrain-app-icon.png",
+                "menuIcon": true,
+                "name": "IMAGES_BETRAIN_APP_ICON_PNG",
                 "type": "png"
             }
         ]
     },
+    "sdkVersion": "3",
     "shortName": "BeTrain",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
     "uuid": "223995c5-9150-4770-94e9-82ec2c5b2623",
     "versionCode": 1,
-    "versionLabel": "0.6",
+    "versionLabel": "1.2",
     "watchapp": {
+        "hiddenApp": false,
         "watchface": false
     }
 }

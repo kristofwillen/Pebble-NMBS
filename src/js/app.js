@@ -10,7 +10,7 @@ var Station3  = localStorage.getItem('Station3');
 var Station4  = localStorage.getItem('Station4');
 var info      = Pebble.getActiveWatchInfo();
 //console.log('Pebble model: ' + info.model);
-if (info.model == "qemu_platform_chalk") {
+if ((info.model.search("qemu_platform_chalk") != -1) || (info.model.search('pebble_polished') != -1) || (info.model.search('pebble_time_round') != -1)) {
   var xres = 180; 
   var yres = 180;
 }
@@ -63,7 +63,7 @@ Pebble.addEventListener("webviewclosed",
   function(e) {
     //Get JSON dictionary
     var configuration = JSON.parse(decodeURIComponent(e.response));
-    console.log("[DBUG] Configuration window returned: " + JSON.stringify(configuration));
+    //console.log("[DBUG] Configuration window returned: " + JSON.stringify(configuration));
     //Pebble.sendAppMessage(configuration);
     Station1 = configuration.Station1;
     Station2 = configuration.Station2;
@@ -128,7 +128,7 @@ if (Station3) { StarttmpList.push(Station3); }
 if (Station4) { StarttmpList.push(Station4); }
 
 if (StarttmpList.length === 0) { 
-  console.log("[DBUG] Startlist is empty, showing error card");
+  //console.log("[DBUG] Startlist is empty, showing error card");
   var ErrorWindow = new UI.Window();
   var text = new UI.Text({
     position: new Vector2(0, 0),
@@ -146,7 +146,7 @@ if (StarttmpList.length === 0) {
 }
 else { 
   if (StarttmpList.length < 2) { 
-    console.log("[DBUG] Only 1 station configured, showing error card");
+    //console.log("[DBUG] Only 1 station configured, showing error card");
     var ErrorWindow = new UI.Window();
     var text = new UI.Text({
       position: new Vector2(0, 0),
@@ -181,7 +181,7 @@ else {
     StartMenu.show();
 
     StartMenu.on('select', function(e) {
-    console.log("[DBUG] Selected " + e.item.title);
+    //console.log("[DBUG] Selected " + e.item.title);
     var fromStationSelected = e.item.title;
     var StopStationList = [];
   

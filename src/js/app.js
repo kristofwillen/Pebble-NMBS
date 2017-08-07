@@ -41,7 +41,7 @@ else {
     var EWRONGCFG   = "\n\n\nMAUVAISE CONFIGURATION TROUVE: Veuillez spécifier au moins 2 stations dans l'écran de configuration";
   }
   else {
-    var spoor       = "gate";
+    var spoor       = "track";
     var selectstart = "Start : ";
     var selectdest  = "Destination :";
     var dldata      = "\n\nDownloading NMBS data...";

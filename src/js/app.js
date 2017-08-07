@@ -25,8 +25,8 @@ if (navigator.language.match(/nl/i)) {
   var spoor         = "spoor";
   var selectstart   = "Start :";
   var selectdest    = "Bestemming :";
-  var dldata        = "\n\nDownloaden van NMBS data...";
-  var EDLDATA       = "\n\nData request gefaald !";
+  var dldata        = "\n\n\nDownloaden van NMBS data...";
+  var EDLDATA       = "\n\n\nData request gefaald !";
   var ENOCFG        = "\n\n\nGEEN CONFIGURATIE GEVONDEN: Gelieve BeTrain te configureren via de Pebble app op uw GSM en daarna BeTrain te herstarten";
   var EWRONGCFG     = "\n\n\nVERKEERDE CONFIGURATIE GEVONDEN : Gelieve minstens 2 stations te specifiëren in de BeTrain configuratie";
 } 
@@ -35,8 +35,8 @@ else {
     var spoor       = "voie"; 
     var selectstart = "Départ :";
     var selectdest  = "Destination :";
-    var dldata      = "\n\nTéléchargement des données de NMBS...";
-    var EDLDATA     = "\n\nTéléchargement échoué !";
+    var dldata      = "\n\n\nTéléchargement des données de NMBS...";
+    var EDLDATA     = "\n\n\nTéléchargement échoué !";
     var ENOCFG      = "\n\n\nAUCUNE CONFIGURATION TROUVE: Veuillez configurer BeTrain via le Pebble app sur vortre mobile, et après relancer BeTrain";
     var EWRONGCFG   = "\n\n\nMAUVAISE CONFIGURATION TROUVE: Veuillez spécifier au moins 2 stations dans l'écran de configuration";
   }
@@ -44,8 +44,8 @@ else {
     var spoor       = "track";
     var selectstart = "Start : ";
     var selectdest  = "Destination :";
-    var dldata      = "\n\nDownloading NMBS data...";
-    var EDLDATA     = "\n\nData fetch failed !";
+    var dldata      = "\n\n\nDownloading NMBS data...";
+    var EDLDATA     = "\n\n\nData fetch failed !";
     var ENOCFG      = "\n\n\nNO CONFIGURATION FOUND: please config this app via the Pebble app on your phone, and restart the app";
     var EWRONGCFG   = "\n\n\nWRONG CONFIGURATION FOUND: Please select at least 2 stations in the configuration window";
   }

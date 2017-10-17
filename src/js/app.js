@@ -87,7 +87,7 @@ var parseFeed = function(data, quantity) {
     var gate        = data.connection[i].departure.platform;
     var epoch       = data.connection[i].departure.time;
     var travelTime  = data.connection[i].duration/60;
-    var delay       = data.connection[i].departure.delay/60;
+    var delay       = parseInt(data.connection[i].departure.delay/60);
     var objDate     = new Date(0);
     
     // Change epoch return to HH:MM format
@@ -235,7 +235,8 @@ else {
       },
       function(data) {
         // Create an Menu with the first 5 trains available
-        var menuItems = parseFeed(data, 5);
+        // console.log("[DBUG] " + data.connection[0].departure.direction.name + " LISTSIZE = " + Object.keys(data).length);
+        var menuItems = parseFeed(data, Object.keys(data).length);
         var resultsMenu = new UI.Menu({
           sections: [{
             title: fromStationSelected + " > " + toStationSelected,

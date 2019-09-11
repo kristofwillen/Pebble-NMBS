@@ -25,10 +25,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build and test with Rebble
       run: |
-        docker run -u $(id -u):$(id -g) \
-           --rm -i \
+        docker run --rm -i \
            -v $(pwd):/work \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            -e DISPLAY=$DISPLAY \
-           dmorgan81/rebble:$VERSION build
+           dmorgan81/rebble build
 

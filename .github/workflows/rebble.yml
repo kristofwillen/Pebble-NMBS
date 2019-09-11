@@ -9,9 +9,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Setup Docker
+    - name: Install Docker
       run:
         sudo apt -y install docker
+    - name: Install Rebble
+      run:
         docker pull dmorgan81/rebble
         
   build:

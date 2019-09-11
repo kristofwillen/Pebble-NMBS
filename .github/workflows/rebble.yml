@@ -1,0 +1,31 @@
+name: Rebble
+
+on: [push]
+
+jobs:
+  setup:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Docker
+      run:
+        apt install docker
+        docker pull dmorgan81/rebble
+        
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and test with Rebble
+      run: |
+        docker run -u $(id -u):$(id -g) \
+           --rm -it \
+           -v $(pwd):/work \
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           -e DISPLAY=$DISPLAY \
+           dmorgan81/rebble:$VERSION build
+
